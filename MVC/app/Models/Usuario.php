@@ -40,7 +40,7 @@ class Usuario extends Model
     public function findBy(array $parametros)
     {
         $key = array_key_fist($parametros);
-        $slq = 'SELECT * FROM usuario WHERE'.$key.' = :'.$key;
+        $slq = 'SELECT * FROM usuario WHERE'.$key." = :$key";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($parametros);
         return $stmt->fetch();
