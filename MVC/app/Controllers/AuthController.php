@@ -16,8 +16,8 @@ class AuthController extends Controller{
     }
 
     public function login(){
-        $email->$_POST['email'];
-        $senha->$_POST['email'];
+        $email=$_POST['email'];
+        $senha=$_POST['senha'];
 
         $usuarioModel = new Usuario();
         $usuario = $usuarioModel->attempt(["email"=>$email,"senha"=>$senha]);

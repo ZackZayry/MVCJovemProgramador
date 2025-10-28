@@ -14,6 +14,7 @@ $router->get('/produtos/cadastrar','ProdutosController@cadastrar');//Exibe view 
 $router->post('/produtos/salvar','ProdutosController@salvar');//Efetivamente salva os dados
 $router->get('/produtos/editar/{id}','ProdutosController@editar');
 $router->get('/produtos/excluir/{id}','ProdutosController@excluir');
+$router->post('/produtos/buscar', 'ProdutosController@buscar');
 
 //Rota para cadastro
 $router->get('/cadastrar','ClienteController@index');

@@ -80,4 +80,13 @@ class ProdutosController extends Controller
         
 
     }
+
+    public function buscar()
+    {
+        $termo = $_POST['produto'];
+        $produtoModel = new Produto();
+        $resultados = $produtoModel->findBy(['nome'=>$termo]);
+        header('Content-Type: application/json');
+        echo json_encode(['um'=>2]);
+    }
 }

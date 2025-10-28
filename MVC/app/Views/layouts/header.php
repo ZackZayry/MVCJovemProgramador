@@ -28,10 +28,11 @@
         <li><a href="<?=url_to('auth')?>">Login</a></li>
       <?php else:?>
         <li>
-          <p>Bem vindo<?= Auth::user()?></p>
-          <p>Seu email é<?= Auth::email() ?></p>
+          <p>Bem vindo <?= Auth::user()->nome?></p>
+          <p>Seu email é <?= Auth::user()->email ?></p>
         </li>
         <li><a href="<?=url_to('auth/logout')?>">Logout</a></li>
       <?php endif?>
       </ul>
     </nav>
+    <?php serialize(Auth::user()) ?>

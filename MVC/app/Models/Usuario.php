@@ -17,6 +17,13 @@ class Usuario extends Model
         parent::__construct();
     }
     /**
+     * 
+     * @return array papeis do usuaio
+     */ 
+    public function getRoles(){
+        return $this->roles;
+    }
+    /**
      * @param string $grupo que deve ser consultado 
      * @return bool true se o usuário pertence ao grupo, false caso contrário.
      */
@@ -39,8 +46,8 @@ class Usuario extends Model
     */
     public function findBy(array $parametros)
     {
-        $key = array_key_fist($parametros);
-        $slq = 'SELECT * FROM usuario WHERE'.$key." = :$key";
+        $key = array_key_first($parametros);
+        $sql = "SELECT * FROM usuario WHERE ".$key." = :$key";
         $stmt = $this->db->prepare($sql);
         $stmt->execute($parametros);
         return $stmt->fetch();
@@ -61,8 +68,10 @@ class Usuario extends Model
         if(!isset($usuario)){
             return null;
         }
-        $senha = $usuario['senha'];
-        if(password_verify($credentials['senha'],$usuario->$senha)){
+        $senha = $credentials['senha'];
+        if(password_verify($credentials['senha'],$usuario->senha)){
+            $roleModel = new Roles();
+            $usuario->roles = $roleModel->getUserRoles($usuario->id);
             return $usuario;
         }
         return null;

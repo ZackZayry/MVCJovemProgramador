@@ -23,4 +23,13 @@ class Produto extends Model
     {
         return $this->find($id);
     }
+
+    public function findBy(array $parametros)
+    {
+        $key = array_key_first($parametros);
+        $sql = 'SELECT * FROM {$this->table} WHERE'.$key." like :$key";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($parametros);
+        return $stmt->fetchAll();
+    }
 }

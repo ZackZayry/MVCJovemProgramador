@@ -15,4 +15,12 @@ define('USERNAME','root');//não é interessante que se use o root
 define('PASSWORD','');
 $_ENV['APP_ENV']='development';
 
+$roles = [
+    'user' =>
+    [
+        'role' => 'user'
+        'descricao' => 'Nivel de acesso mais básico'
+    ]
+];
+
 

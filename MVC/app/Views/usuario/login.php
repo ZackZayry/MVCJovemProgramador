@@ -2,7 +2,7 @@
     <div class="grid">
         <div></div>
         <div>
-            <form action="" method="post">
+            <form action="<?= url_to('auth/login')?>" method="post">
                 <fildset>
                     <label>
                         Email:
